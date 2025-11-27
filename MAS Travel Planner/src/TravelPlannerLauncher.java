@@ -23,7 +23,7 @@ public class TravelPlannerLauncher {
 
             // Create and start agents
             AgentController userAgent = mainContainer.createNewAgent(
-                    "user", "agents.UserAgent", null);
+                    "user", "agents.GUIUserAgent", null);
 
             AgentController plannerAgent = mainContainer.createNewAgent(
                     "planner", "agents.PlannerAgent", null);
@@ -43,6 +43,12 @@ public class TravelPlannerLauncher {
             transportAgent.start();
             hotelAgent.start();
             paymentAgent.start();
+
+            // After starting agents, add:
+            AgentController sniffer = mainContainer.createNewAgent(
+                    "sniffer", "jade.tools.sniffer.Sniffer",
+                    new Object[]{"user;planner;transport;hotel;payment"});
+            sniffer.start();
 
             System.out.println("\n=================================");
             System.out.println("Simple Travel Planner MAS Started");

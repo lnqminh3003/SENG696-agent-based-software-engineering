@@ -17,5 +17,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" exported="" name="commons-codec-1.16.0" level="project" />
+    <orderEntry type="library" name="commons-codec-1.16.0 (2)" level="project" />
   </component>
 </module>
