@@ -22,14 +22,15 @@ public class TravelPlannerLauncher {
             AgentContainer mainContainer = runtime.createMainContainer(profile);
 
             // Create and start agents
+
+            AgentController transportAgent = mainContainer.createNewAgent(
+                    "transport", "agents.TransportAgent", null);
+
             AgentController userAgent = mainContainer.createNewAgent(
                     "user", "agents.GUIUserAgent", null);
 
             AgentController plannerAgent = mainContainer.createNewAgent(
                     "planner", "agents.PlannerAgent", null);
-
-            AgentController transportAgent = mainContainer.createNewAgent(
-                    "transport", "agents.TransportAgent", null);
 
             AgentController hotelAgent = mainContainer.createNewAgent(
                     "hotel", "agents.HotelAgent", null);

@@ -1,26 +1,35 @@
 package agents;
 
 import jade.core.Agent;
-import jade.core.behaviours.*;
+import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.UnreadableException;
-import java.io.IOException;
-import java.util.*;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import models.TransportOption;
 import models.UserRequest;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
+
 public class TransportAgent extends Agent {
+
     private Map<String, List<TransportOption>> transportDatabase;
 
     @Override
     protected void setup() {
         System.out.println("TransportAgent " + getLocalName() + " is ready.");
-        initializeDatabase();
+
+        loadDatabaseFromJson();
 
         addBehaviour(new CyclicBehaviour() {
             @Override
             public void action() {
                 ACLMessage msg = receive();
+
                 if (msg != null && msg.getPerformative() == ACLMessage.REQUEST) {
                     try {
                         UserRequest request = (UserRequest) msg.getContentObject();
@@ -35,48 +44,37 @@ public class TransportAgent extends Agent {
         });
     }
 
-    private void initializeDatabase() {
-        transportDatabase = new HashMap<>();
+    private void loadDatabaseFromJson() {
+        ObjectMapper mapper = new ObjectMapper();
 
-        // Paris options
-        List<TransportOption> parisTransport = new ArrayList<>();
-        parisTransport.add(new TransportOption("Flight", 350.0, "Paris"));
-        parisTransport.add(new TransportOption("Train", 180.0, "Paris"));
-        parisTransport.add(new TransportOption("Bus", 85.0, "Paris"));
-        transportDatabase.put("Paris", parisTransport);
+        // Build a relative path to the project directory
+        String basePath = System.getProperty("user.dir");  // project root folder
+        String fullPath = basePath + File.separator + "src" + File.separator +
+                "database" + File.separator + "transport_data.json";
 
-        // London options
-        List<TransportOption> londonTransport = new ArrayList<>();
-        londonTransport.add(new TransportOption("Flight", 280.0, "London"));
-        londonTransport.add(new TransportOption("Train", 150.0, "London"));
-        londonTransport.add(new TransportOption("Bus", 60.0, "London"));
-        transportDatabase.put("London", londonTransport);
+        try {
+            transportDatabase = mapper.readValue(
+                    new File(fullPath),
+                    new TypeReference<Map<String, List<TransportOption>>>() {}
+            );
 
-        // New York options
-        List<TransportOption> nyTransport = new ArrayList<>();
-        nyTransport.add(new TransportOption("Flight", 650.0, "New York"));
-        nyTransport.add(new TransportOption("Train", 320.0, "New York"));
-        nyTransport.add(new TransportOption("Bus", 150.0, "New York"));
-        transportDatabase.put("New York", nyTransport);
+//            System.out.println("TransportAgent: Loaded transport data from " + fullPath);
 
-        // Tokyo options
-        List<TransportOption> tokyoTransport = new ArrayList<>();
-        tokyoTransport.add(new TransportOption("Flight", 950.0, "Tokyo"));
-        tokyoTransport.add(new TransportOption("Train", 520.0, "Tokyo"));
-        transportDatabase.put("Tokyo", tokyoTransport);
-
-        // Default options for any other destination
-        List<TransportOption> defaultTransport = new ArrayList<>();
-        defaultTransport.add(new TransportOption("Flight", 500.0, "Default"));
-        defaultTransport.add(new TransportOption("Train", 250.0, "Default"));
-        defaultTransport.add(new TransportOption("Bus", 120.0, "Default"));
-        transportDatabase.put("Default", defaultTransport);
+        } catch (IOException e) {
+            System.err.println("TransportAgent: ERROR loading JSON at: " + fullPath);
+            transportDatabase = new HashMap<>();
+            e.printStackTrace();
+        }
     }
+
 
     private void provideTransportOptions(UserRequest request, jade.core.AID sender) {
         String destination = request.getDestination();
-        List<TransportOption> options = transportDatabase.getOrDefault(destination,
-                transportDatabase.get("Default"));
+
+        List<TransportOption> options = transportDatabase.getOrDefault(
+                destination,
+                transportDatabase.getOrDefault("Default", new ArrayList<>())
+        );
 
         TransportOption[] optionsArray = options.toArray(new TransportOption[0]);
 

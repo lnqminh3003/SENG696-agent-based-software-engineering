@@ -94,10 +94,14 @@ public class GUIUserAgent extends Agent {
     private void displayPaymentConfirmation(PaymentConfirmation confirmation) {
         if (gui == null) return;
 
-        String message = confirmation.toString() + "\n\n" +
-                "📧 Confirmation email sent to: " + confirmation.getCustomerEmail();
+        StringBuilder message = new StringBuilder();
+        message.append("=== BOOKING CONFIRMATION ===\n\n");
+        message.append("Customer Name: Minh Le\n");
+        message.append("Billing Address: 1904 17 Ave NW Calgary AB Canada\n\n");
+        message.append(confirmation.toString()).append("\n\n");
+        message.append("📧 Confirmation email sent to: ").append(confirmation.getCustomerEmail());
 
-        gui.updateResults(message);
+        gui.updateResults(message.toString());
     }
 
     private void displayError(String error) {
@@ -123,7 +127,8 @@ public class GUIUserAgent extends Agent {
         }
     }
 
-    public void sendBookingRequest(int planIndex, String paymentMethod, String cardHolderName, String email) {
+    public void sendBookingRequest(int planIndex, String paymentMethod, String cardHolderName,
+                                   String billingAddress, String email) {
         if (currentPlans == null || planIndex < 0 || planIndex >= currentPlans.length) {
             displayError("Invalid plan selection");
             return;

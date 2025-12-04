@@ -369,7 +369,7 @@ public class TravelPlannerGUI extends JFrame {
 
     private void showPaymentDialog(String plan) {
         JDialog paymentDialog = new JDialog(this, "Payment Details", true);
-        paymentDialog.setSize(500, 450);
+        paymentDialog.setSize(500, 550);
         paymentDialog.setLocationRelativeTo(this);
 
         JPanel panel = new JPanel();
@@ -383,6 +383,7 @@ public class TravelPlannerGUI extends JFrame {
         JTextField nameField = new JTextField();
         JTextField cvvField = new JTextField();
         JTextField expiryField = new JTextField();
+        JTextField addressField = new JTextField();
 
         panel.add(new JLabel("Plan: " + plan));
         panel.add(Box.createVerticalStrut(20));
@@ -395,6 +396,8 @@ public class TravelPlannerGUI extends JFrame {
         panel.add(createFieldPanel("CVV:", cvvField));
         panel.add(Box.createVerticalStrut(10));
         panel.add(createFieldPanel("Expiry (MM/YY):", expiryField));
+        panel.add(Box.createVerticalStrut(20));
+        panel.add(createFieldPanel("Address:", addressField));
         panel.add(Box.createVerticalStrut(20));
 
         JButton confirmButton = new JButton("💳 Confirm Payment");
@@ -410,7 +413,7 @@ public class TravelPlannerGUI extends JFrame {
             int selectedIndex = planSelector.getSelectedIndex();
             if (userAgent != null && selectedIndex >= 0) {
                 // Call agent method to send payment request
-                userAgent.sendBookingRequest(selectedIndex, paymentMethod, cardHolder, email);
+                userAgent.sendBookingRequest(selectedIndex, paymentMethod, cardHolder, "", email);
             } else {
                 JOptionPane.showMessageDialog(this,
                         "Error: Agent not connected or plan not selected",
@@ -436,6 +439,7 @@ public class TravelPlannerGUI extends JFrame {
                 "✅ Payment Successful!\n\n" +
                         "Payment ID: " + confirmation + "\n" +
                         "Booking Reference: " + booking + "\n\n" +
+                        "Name: Minh Le" + "\n\n" +
                         "Confirmation email sent!",
                 "Booking Confirmed",
                 JOptionPane.INFORMATION_MESSAGE);

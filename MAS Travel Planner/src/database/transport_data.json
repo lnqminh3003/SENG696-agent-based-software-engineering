@@ -1,0 +1,57 @@
+{
+  "Paris": [
+    { "type": "Flight", "cost": 350.0, "destination": "Paris" },
+    { "type": "Train", "cost": 180.0, "destination": "Paris" },
+    { "type": "Bus",   "cost": 85.0,  "destination": "Paris" }
+  ],
+  "London": [
+    { "type": "Flight", "cost": 280.0, "destination": "London" },
+    { "type": "Train",  "cost": 150.0, "destination": "London" },
+    { "type": "Bus",    "cost": 60.0,  "destination": "London" }
+  ],
+  "New York": [
+    { "type": "Flight", "cost": 620.0, "destination": "New York" },
+    { "type": "Train",  "cost": 300.0, "destination": "New York" },
+    { "type": "Bus",    "cost": 140.0, "destination": "New York" }
+  ],
+  "Tokyo": [
+    { "type": "Flight", "cost": 900.0, "destination": "Tokyo" },
+    { "type": "Train",  "cost": 500.0, "destination": "Tokyo" },
+    { "type": "Bus",    "cost": 200.0, "destination": "Tokyo" }
+  ],
+  "Sydney": [
+    { "type": "Flight", "cost": 1100.0, "destination": "Sydney" },
+    { "type": "Train",  "cost": 550.0,  "destination": "Sydney" },
+    { "type": "Bus",    "cost": 220.0,  "destination": "Sydney" }
+  ],
+  "Rome": [
+    { "type": "Flight", "cost": 320.0, "destination": "Rome" },
+    { "type": "Train",  "cost": 160.0, "destination": "Rome" },
+    { "type": "Bus",    "cost": 80.0,  "destination": "Rome" }
+  ],
+  "Berlin": [
+    { "type": "Flight", "cost": 250.0, "destination": "Berlin" },
+    { "type": "Train",  "cost": 140.0, "destination": "Berlin" },
+    { "type": "Bus",    "cost": 70.0,  "destination": "Berlin" }
+  ],
+  "Toronto": [
+    { "type": "Flight", "cost": 450.0, "destination": "Toronto" },
+    { "type": "Train",  "cost": 220.0, "destination": "Toronto" },
+    { "type": "Bus",    "cost": 95.0,  "destination": "Toronto" }
+  ],
+  "Singapore": [
+    { "type": "Flight", "cost": 880.0, "destination": "Singapore" },
+    { "type": "Train",  "cost": 450.0, "destination": "Singapore" },
+    { "type": "Bus",    "cost": 190.0, "destination": "Singapore" }
+  ],
+  "Barcelona": [
+    { "type": "Flight", "cost": 300.0, "destination": "Barcelona" },
+    { "type": "Train",  "cost": 170.0, "destination": "Barcelona" },
+    { "type": "Bus",    "cost": 75.0,  "destination": "Barcelona" }
+  ],
+  "Default": [
+    { "type": "Flight", "cost": 500.0, "destination": "Default" },
+    { "type": "Train",  "cost": 250.0, "destination": "Default" },
+    { "type": "Bus",    "cost": 120.0, "destination": "Default" }
+  ]
+}

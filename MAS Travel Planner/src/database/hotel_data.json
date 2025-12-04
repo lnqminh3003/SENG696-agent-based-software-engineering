@@ -1,0 +1,57 @@
+{
+  "Paris": [
+    { "name": "Paris Elite Resort", "price": 210.0, "destination": "Paris" },
+    { "name": "Paris Comfort Inn", "price": 120.0, "destination": "Paris" },
+    { "name": "Paris Budget Stay", "price": 70.0, "destination": "Paris" }
+  ],
+  "London": [
+    { "name": "London Royal Suites", "price": 230.0, "destination": "London" },
+    { "name": "London Riverside Hotel", "price": 150.0, "destination": "London" },
+    { "name": "London Budget Inn", "price": 85.0, "destination": "London" }
+  ],
+  "New York": [
+    { "name": "NYC Manhattan Palace", "price": 300.0, "destination": "New York" },
+    { "name": "NYC Midtown Hotel", "price": 160.0, "destination": "New York" },
+    { "name": "NYC Budget Rooms", "price": 95.0, "destination": "New York" }
+  ],
+  "Tokyo": [
+    { "name": "Tokyo Imperial Suites", "price": 260.0, "destination": "Tokyo" },
+    { "name": "Tokyo Shinjuku Inn", "price": 130.0, "destination": "Tokyo" },
+    { "name": "Tokyo Capsule Stay", "price": 55.0, "destination": "Tokyo" }
+  ],
+  "Sydney": [
+    { "name": "Sydney Harbour Hotel", "price": 240.0, "destination": "Sydney" },
+    { "name": "Sydney City Lodge", "price": 140.0, "destination": "Sydney" },
+    { "name": "Sydney Backpacker Rooms", "price": 75.0, "destination": "Sydney" }
+  ],
+  "Rome": [
+    { "name": "Rome Imperial Hotel", "price": 180.0, "destination": "Rome" },
+    { "name": "Rome Center Inn", "price": 110.0, "destination": "Rome" },
+    { "name": "Rome Budget Stay", "price": 65.0, "destination": "Rome" }
+  ],
+  "Berlin": [
+    { "name": "Berlin Grand Hotel", "price": 170.0, "destination": "Berlin" },
+    { "name": "Berlin City Suites", "price": 100.0, "destination": "Berlin" },
+    { "name": "Berlin Budget Rooms", "price": 60.0, "destination": "Berlin" }
+  ],
+  "Toronto": [
+    { "name": "Toronto Lakeside Hotel", "price": 220.0, "destination": "Toronto" },
+    { "name": "Toronto Downtown Inn", "price": 140.0, "destination": "Toronto" },
+    { "name": "Toronto Budget Stay", "price": 75.0, "destination": "Toronto" }
+  ],
+  "Dubai": [
+    { "name": "Dubai Luxury Palace", "price": 350.0, "destination": "Dubai" },
+    { "name": "Dubai Modern Suites", "price": 200.0, "destination": "Dubai" },
+    { "name": "Dubai Budget Rooms", "price": 95.0, "destination": "Dubai" }
+  ],
+  "Singapore": [
+    { "name": "Singapore Marina Hotel", "price": 260.0, "destination": "Singapore" },
+    { "name": "Singapore Orchard Inn", "price": 150.0, "destination": "Singapore" },
+    { "name": "Singapore Budget Lodge", "price": 80.0, "destination": "Singapore" }
+  ],
+  "Default": [
+    { "name": "Premium Hotel", "price": 160.0, "destination": "Default" },
+    { "name": "Standard Hotel", "price": 100.0, "destination": "Default" },
+    { "name": "Budget Hotel", "price": 60.0, "destination": "Default" }
+  ]
+}
